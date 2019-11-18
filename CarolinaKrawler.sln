@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarolinaKrawler", "CarolinaKrawler\CarolinaKrawler.csproj", "{6F2DB8D8-E03E-48FD-A117-F1954A866E82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{F21C679C-FF5C-4FE7-89F3-FDE2ED5663CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F2DB8D8-E03E-48FD-A117-F1954A866E82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2DB8D8-E03E-48FD-A117-F1954A866E82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2DB8D8-E03E-48FD-A117-F1954A866E82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2DB8D8-E03E-48FD-A117-F1954A866E82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F21C679C-FF5C-4FE7-89F3-FDE2ED5663CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F21C679C-FF5C-4FE7-89F3-FDE2ED5663CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F21C679C-FF5C-4FE7-89F3-FDE2ED5663CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F21C679C-FF5C-4FE7-89F3-FDE2ED5663CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4393A507-6298-4CE4-B3CD-84C25924A511}
+	EndGlobalSection
+EndGlobal
