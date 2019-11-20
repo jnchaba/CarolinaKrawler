@@ -6,20 +6,55 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
+    /// <summary>
+    /// Class for creating the Player character.
+    /// Extends LivingCreature.cs.
+    /// </summary>
     public class Player : LivingCreature
     {
+        /// <summary>
+        /// Amount of Gold in Player's Inventory
+        /// </summary>
         public int Gold { get; set; }
+
+        /// <summary>
+        /// Amount of XP that the Player has.
+        /// </summary>
         public int ExperiencePoints { get; private set; }
+
+        /// <summary>
+        /// Player's current level.
+        /// </summary>
         public int Level
         {
             get { return ((ExperiencePoints / 100) + 1); }
         }
 
+        /// <summary>
+        /// List representing Player's inventory. 
+        /// Contains InventoryItems.
+        /// </summary>
         public List<InventoryItem> Inventory { get; set; }
+
+        /// <summary>
+        /// List representing Player's Quest Log.
+        /// Contains Quests.
+        /// </summary>
         public List<PlayerQuest> Quests { get; set; }
 
+        /// <summary>
+        /// Player's current location.
+        /// </summary>
         public Location CurrentLocation { get; set; }
 
+        /// <summary>
+        /// Constructor method for creating the Player object.
+        /// This method is only called at the start of a new game.
+        /// </summary>
+        /// <param name="currentHitPoints"> Player's current health. </param>
+        /// <param name="maximumHitPoints"> Player's maximum health. </param>
+        /// <param name="gold"> Player' gold. </param>
+        /// <param name="experiencePoints"> Player's experience points. </param>
         public Player(int currentHitPoints, int maximumHitPoints, int gold, int experiencePoints) : base(currentHitPoints, maximumHitPoints)
         {
             Gold = gold;
@@ -29,6 +64,11 @@ namespace Engine
             Quests = new List<PlayerQuest>();
         }
 
+        /// <summary>
+        /// Method to check if the player has the item required to enter item-locked locations.
+        /// </summary>
+        /// <param name="location"> Location to check required item for. </param>
+        /// <returns></returns>
         public bool HasRequiredItemToEnterThisLocation(Location location)
         {
             if(location.ItemRequiredEntry == null)
@@ -47,6 +87,11 @@ namespace Engine
             return false;
         }
 
+        /// <summary>
+        /// Method to check if the player is at the location neccessary to complete the quest.
+        /// </summary>
+        /// <param name="quest"> Quest to check. </param>
+        /// <returns></returns>
         public bool AtQuestDestinationToCompleteQuest(Quest quest)
         {
             foreach(PlayerQuest playerQuest in Quests)
@@ -64,6 +109,11 @@ namespace Engine
             return false;
         }
 
+        /// <summary>
+        /// Method to check if the player has a specific quest.
+        /// </summary>
+        /// <param name="quest"> Quest to check. </param>
+        /// <returns></returns>
         public bool HasThisQuest(Quest quest)
         {
             foreach(PlayerQuest playerQuest in Quests)
@@ -77,6 +127,11 @@ namespace Engine
             return false;
         }
 
+        /// <summary>
+        /// Method to check if the player has completed a specific quest.
+        /// </summary>
+        /// <param name="quest"> Quest to check. </param>
+        /// <returns></returns>
         public bool CompletedThisQuest(Quest quest)
         {
             foreach(PlayerQuest playerQuest in Quests)
@@ -90,6 +145,11 @@ namespace Engine
             return false;
         }
 
+        /// <summary>
+        /// Method to check if the player has all the items to complete a specific quest.
+        /// </summary>
+        /// <param name="quest"> Quest to check. </param>
+        /// <returns></returns>
         public bool HasAllQuestCompleteItems(Quest quest)
         {
             foreach (QuestCompleteItem qci in quest.QuestCompleteItems)
@@ -118,7 +178,10 @@ namespace Engine
             return true;
         }
 
-
+        /// <summary>
+        /// Method to remove items to complete quests from the player's inventory.
+        /// </summary>
+        /// <param name="quest"> Quest to remove items for. </param>
         public void RemoveQuestCompleteItems(Quest quest)
         {
             foreach (QuestCompleteItem qci in quest.QuestCompleteItems)
@@ -134,6 +197,10 @@ namespace Engine
             }
         }
 
+        /// <summary>
+        /// Method to add an item to the player's inventory.
+        /// </summary>
+        /// <param name="itemToAdd"> Item to add. </param>
         public void AddItemToInventory(Item itemToAdd)
         {
             foreach (InventoryItem ii in Inventory)
@@ -159,6 +226,10 @@ namespace Engine
             }
         }
 
+        /// <summary>
+        /// Method to add experience points to the player.
+        /// </summary>
+        /// <param name="experienceToAdd"> Amount of XP to add to player. </param>
         public void AddExperiencePoints(int experienceToAdd)
         {
             ExperiencePoints += experienceToAdd;
