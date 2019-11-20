@@ -9,7 +9,7 @@ namespace Engine
 {
     /// <summary>
     /// Class for enemy objects.
-    /// Inherits from LivingCreature.cs.
+    /// Extends LivingCreature.cs.
     /// </summary>
     public class Enemy : LivingCreature
     {
