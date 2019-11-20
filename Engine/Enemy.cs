@@ -1,12 +1,4 @@
-﻿/**
- * author: Jakub Chaba
- * file: Enemy.cs
- *
- * Class for creating enemy objects.
- * Inherits from LivingCreater.cs
- */
-
-using Engine;
+﻿using Engine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,50 +7,53 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
+    /// <summary>
+    /// Class for enemy objects.
+    /// Inherits from LivingCreature.cs.
+    /// </summary>
     public class Enemy : LivingCreature
     {
-
-        /**
-         * ID for enemy object
-         */
+        /// <summary>
+        /// ID of enemy.
+        /// </summary>
         public int ID { get; set; }
 
-        /**
-         * Name of enemy object
-         */
+        /// <summary>
+        /// Name of enemy.
+        /// </summary>
         public string Name { get; set; }
 
-        /**
-         * Maximum amount of damage that the enemy can deal to player
-         */
+        /// <summary>
+        /// Maximum damage enemy can deal.
+        /// </summary>
         public int MaximumDamage { get; set; }
 
-        /**
-         * Amount of xp that the enemy can reward upon successful defeat
-         */
+        /// <summary>
+        /// Amount of XP enemy rewards upon death.
+        /// </summary>
         public int RewardExperiencePoints { get; set; }
 
-        /**
-         * Amount of gold that enemy can reward upon successful defeat
-         */
+        /// <summary>
+        /// Amount of gold enemy rewards upon death.
+        /// </summary>
         public int RewardGold { get; set; }
 
-        /**
-         * List containing possible loot drops from enemy
-         */
+        /// <summary>
+        /// List of possible loot items enemy can drop.
+        /// </summary>
         public List<Item> LootTable { get; set; }
 
-        /**
-         * Constructor function - creates a new enemy object
-         * 
-         * @param id id of enemy
-         * @param name name of enemy
-         * @param maximumDamage maximum damage enemy can deal
-         * @param rewardExperiencePoints xp enemy rewards on defeat
-         * @param rewardGold gold enemy rewards on defeat
-         * @param currentHitPoints the current health of the enemy
-         * @param maximumHitPoints the maximum health of the enemy
-         */
+        /// <summary>
+        /// Constructor for new enemy objects.
+        /// </summary>
+        /// <param name="id"> the enemy's id. </param>
+        /// <param name="name"> the enemy's name. </param>
+        /// <param name="maximumDamage"> the max damage the enemy can deal.
+        /// </param>
+        /// <param name="rewardExperiencePoints"> xp rewarded. </param>
+        /// <param name="rewardGold"> gold rewarded. </param>
+        /// <param name="currentHitPoints"> current HP. </param>
+        /// <param name="maximumHitPoints"> max HP. </param>
         public Enemy( int id, string name, int maximumDamage,
             int rewardExperiencePoints, int rewardGold, int currentHitPoints,
             int maximumHitPoints) : base(currentHitPoints, maximumHitPoints)
@@ -72,10 +67,10 @@ namespace Engine
             LootTable = new List<Item>();
         }
 
-        /**
-         * Method for adding items to the enemy's loot table
-         * @param item item to add to loot table
-         */
+        /// <summary>
+        /// Method for adding items to the enemy's loot table.
+        /// </summary>
+        /// <param name="item"> item to add. </param>
         public void addLoot(Item item)
         {
             LootTable.Add(item);
