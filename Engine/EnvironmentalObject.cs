@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Engine
 {
+    /// <summary>
+    /// Class for creating environmental objects that can be looted for items.
+    /// </summary>
     public class EnvironmentalObject
     {
         

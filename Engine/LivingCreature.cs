@@ -26,8 +26,8 @@ namespace Engine
         /// <summary>
         /// Constructor method for creating new living creatures.
         /// </summary>
-        /// <param name="currentHitPoints"> current health points. </param>
-        /// <param name="maximumHitPoints"> maximum health points. </param>
+        /// <param name="currentHitPoints"> Current health points. </param>
+        /// <param name="maximumHitPoints"> Maximum health points. </param>
         public LivingCreature(int currentHitPoints, int maximumHitPoints)
         {
             CurrentHitPoints = currentHitPoints;
