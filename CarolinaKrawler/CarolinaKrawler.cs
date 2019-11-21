@@ -32,6 +32,14 @@ namespace CarolinaKrawler
             UpdateInventoryListInUI();
         }
 
+        private void resetWorld()
+        {
+            foreach (Lootable lootable in World.Lootables)
+            {
+                lootable.IsLooted = false;
+            }
+        }
+
         /**
          * Moves the player to the room north of current location
          */
@@ -102,7 +110,7 @@ namespace CarolinaKrawler
                 {
                     _currentLootable.Contents.Add(lootItem);
                 }
-
+                _looted = _currentLootable.IsLooted;
                 UpdateEnvironmentListInUI();
             }
 
@@ -590,6 +598,7 @@ namespace CarolinaKrawler
             if (_player.CurrentHitPoints <= 0)
             {
                 rtbMessages.Clear();
+                resetWorld();
                 rtbMessages.Text += "You awaken from a foggy dream to the sound of your window being broken.";
                 ScrollToBottomOfMessages();
                 _player.Inventory.Clear();

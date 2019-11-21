@@ -10,7 +10,6 @@ namespace Engine
         public static readonly List<Location> Locations = new List<Location>();
         public static readonly List<Lootable> Lootables = new List<Lootable>();
 
-
         public const int ITEM_ID_FLIP_KNIFE = 1;
         public const int ITEM_ID_WORN_WALLET = 2;
         public const int ITEM_ID_WORN_CELLPHONE = 3;
@@ -318,6 +317,8 @@ namespace Engine
             }
             return null;
         }
+
+
 
     }
 }
