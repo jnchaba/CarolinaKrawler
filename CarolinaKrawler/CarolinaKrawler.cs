@@ -4,12 +4,6 @@ using Engine;
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -71,7 +65,7 @@ namespace CarolinaKrawler
 
         private void MoveTo(Location newLocation)
         {
-            if(!_player.HasRequiredItemToEnterThisLocation(newLocation))
+            if (!_player.HasRequiredItemToEnterThisLocation(newLocation))
             {
                 rtbMessages.Text += "You must have a " + newLocation.ItemRequiredEntry.Name + " to enter this location." + Environment.NewLine;
                 ScrollToBottomOfMessages();
@@ -102,14 +96,14 @@ namespace CarolinaKrawler
                 Lootable standardLootable = World.LootableByID(newLocation.LootableHere.ID);
                 _currentLootable = new Lootable(standardLootable.ID, standardLootable.Name, standardLootable.NamePlural, standardLootable.Capacity, standardLootable.IsLooted);
 
-                foreach(Item lootItem in standardLootable.Contents)
+                foreach (Item lootItem in standardLootable.Contents)
                 {
                     _currentLootable.Contents.Add(lootItem);
                 }
-                
+
                 UpdateEnvironmentListInUI();
             }
-         
+
 
             if (newLocation.QuestHere != null)
             {
@@ -181,12 +175,12 @@ namespace CarolinaKrawler
 
             }
 
-            if(newLocation.NumberEnemy == 0)
+            if (newLocation.NumberEnemy == 0)
             {
                 newLocation.EnemyHere = null;
             }
 
-            if(newLocation.EnemyHere != null)
+            if (newLocation.EnemyHere != null)
 
             {
                 rtbMessages.Text += "You see a " + newLocation.EnemyHere.Name + Environment.NewLine;
@@ -196,7 +190,7 @@ namespace CarolinaKrawler
 
                 _currentEnemy = new Enemy(standardEnemy.ID, standardEnemy.Name, standardEnemy.MaximumDamage, standardEnemy.RewardExperiencePoints, standardEnemy.RewardGold, standardEnemy.CurrentHitPoints, standardEnemy.MaximumHitPoints);
 
-                foreach(Item lootItem in standardEnemy.LootTable)
+                foreach (Item lootItem in standardEnemy.LootTable)
                 {
                     _currentEnemy.LootTable.Add(lootItem);
                 }
@@ -214,7 +208,7 @@ namespace CarolinaKrawler
                 cboWeapons.Visible = false;
                 UpdateMedListInUI();
                 btnUseWeapon.Visible = false;
-                
+
             }
 
             UpdateInventoryListInUI();
@@ -233,7 +227,7 @@ namespace CarolinaKrawler
             dgvEnvironment.Columns[1].Width = 58;
             dgvEnvironment.Rows.Clear();
 
-            
+
             List<Lootable> lootables = new List<Lootable>();
             foreach (EnvironmentalObject environmentalObject in _player.CurrentLocation.LocationEnvironment)
             {
@@ -248,7 +242,7 @@ namespace CarolinaKrawler
                 }
             }
 
-            if(lootables.Count == 0)
+            if (lootables.Count == 0)
             {
                 cboInspect.Enabled = false;
                 btnInspect.Enabled = false;
@@ -307,12 +301,12 @@ namespace CarolinaKrawler
 
         private void LootInspectedItem()
         {
-            Item inspected = (Item) cboContents.SelectedItem;
+            Item inspected = (Item)cboContents.SelectedItem;
             _player.AddItemToInventory(inspected);
             int selectedIndex = cboContents.SelectedIndex;
             UpdateInventoryListInUI();
         }
-        
+
         private void UpdateInventoryListInUI()
         {
             dgvInventory.RowHeadersVisible = false;
@@ -328,7 +322,7 @@ namespace CarolinaKrawler
                 {
                     dgvInventory.Rows.Add(new[] { inventoryItem.Details.Name, inventoryItem.Quantity.ToString() });
                 }
-            }      
+            }
         }
 
         private void UpdateQuestListInUI()
@@ -462,10 +456,10 @@ namespace CarolinaKrawler
 
                 // Add looted item to inventory
 
-                foreach(InventoryItem inventoryItem in lootedItems)
+                foreach (InventoryItem inventoryItem in lootedItems)
                 {
                     _player.AddItemToInventory(inventoryItem.Details);
-                    if(inventoryItem.Quantity == 1)
+                    if (inventoryItem.Quantity == 1)
                     {
                         rtbMessages.Text += "You loot " + inventoryItem.Quantity.ToString() + " " + inventoryItem.Details.Name + Environment.NewLine;
                         ScrollToBottomOfMessages();
@@ -475,7 +469,7 @@ namespace CarolinaKrawler
                         rtbMessages.Text += "You loot " + inventoryItem.Quantity.ToString() + " " + inventoryItem.Details.NamePlural + Environment.NewLine;
                         ScrollToBottomOfMessages();
                     }
-                
+
 
                 }
 
@@ -506,7 +500,7 @@ namespace CarolinaKrawler
             }
             UpdatePlayerStats();
         }
-        
+
 
         private void btnInspect_Click(object sender, EventArgs e)
         {
@@ -516,7 +510,7 @@ namespace CarolinaKrawler
                 UpdateInspectListInUI();
                 selectedLootable.IsLooted = true;
             }
-            
+
         }
 
         private void btnUseMed_Click(object sender, EventArgs e)
@@ -524,14 +518,14 @@ namespace CarolinaKrawler
             MedPack medpack = (MedPack)cboMeds.SelectedItem;
             _player.CurrentHitPoints = (_player.CurrentHitPoints + medpack.HealAmount);
 
-            if(_player.CurrentHitPoints > _player.MaximumHitPoints)
+            if (_player.CurrentHitPoints > _player.MaximumHitPoints)
             {
                 _player.CurrentHitPoints = _player.CurrentHitPoints;
             }
 
-            foreach(InventoryItem ii in _player.Inventory)
+            foreach (InventoryItem ii in _player.Inventory)
             {
-                if(ii.Details.ID == medpack.ID)
+                if (ii.Details.ID == medpack.ID)
                 {
                     ii.Quantity--;
                     break;
@@ -568,7 +562,7 @@ namespace CarolinaKrawler
             lblExperience.Text = _player.ExperiencePoints.ToString();
             lblLevel.Text = _player.Level.ToString();
 
-            if (_player.CurrentHitPoints <=0)
+            if (_player.CurrentHitPoints <= 0)
             {
                 rtbMessages.Clear();
                 rtbMessages.Text += "You awaken from a foggy dream to the sound of your window being broken.";

@@ -1,9 +1,4 @@
-﻿using Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Engine
 {
@@ -54,7 +49,7 @@ namespace Engine
         /// <param name="rewardGold"> gold rewarded. </param>
         /// <param name="currentHitPoints"> current HP. </param>
         /// <param name="maximumHitPoints"> max HP. </param>
-        public Enemy( int id, string name, int maximumDamage,
+        public Enemy(int id, string name, int maximumDamage,
             int rewardExperiencePoints, int rewardGold, int currentHitPoints,
             int maximumHitPoints) : base(currentHitPoints, maximumHitPoints)
         {

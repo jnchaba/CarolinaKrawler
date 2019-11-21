@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Engine
 {
@@ -71,14 +67,14 @@ namespace Engine
         /// <returns></returns>
         public bool HasRequiredItemToEnterThisLocation(Location location)
         {
-            if(location.ItemRequiredEntry == null)
+            if (location.ItemRequiredEntry == null)
             {
                 return true;
             }
 
-            foreach(InventoryItem ii in Inventory)
+            foreach (InventoryItem ii in Inventory)
             {
-                if(ii.Details.ID == location.ItemRequiredEntry.ID)
+                if (ii.Details.ID == location.ItemRequiredEntry.ID)
                 {
                     return true;
                 }
@@ -94,17 +90,17 @@ namespace Engine
         /// <returns></returns>
         public bool AtQuestDestinationToCompleteQuest(Quest quest)
         {
-            foreach(PlayerQuest playerQuest in Quests)
+            foreach (PlayerQuest playerQuest in Quests)
             {
-                if(playerQuest.Details.ID == 1)
+                if (playerQuest.Details.ID == 1)
                 {
-                    if(CurrentLocation.ID == 2)
+                    if (CurrentLocation.ID == 2)
                     {
                         return true;
                     }
-                    
+
                 }
-                
+
             }
             return false;
         }
@@ -116,9 +112,9 @@ namespace Engine
         /// <returns></returns>
         public bool HasThisQuest(Quest quest)
         {
-            foreach(PlayerQuest playerQuest in Quests)
+            foreach (PlayerQuest playerQuest in Quests)
             {
-                if(playerQuest.Details.ID == quest.ID)
+                if (playerQuest.Details.ID == quest.ID)
                 {
                     return true;
                 }
@@ -134,9 +130,9 @@ namespace Engine
         /// <returns></returns>
         public bool CompletedThisQuest(Quest quest)
         {
-            foreach(PlayerQuest playerQuest in Quests)
+            foreach (PlayerQuest playerQuest in Quests)
             {
-                if(playerQuest.Details.ID == quest.ID)
+                if (playerQuest.Details.ID == quest.ID)
                 {
                     return playerQuest.IsCompleted;
                 }

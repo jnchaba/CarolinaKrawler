@@ -1,9 +1,4 @@
-﻿using Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Engine
 {
@@ -133,7 +128,7 @@ namespace Engine
         {
             foreach (EnvironmentalObject eo in LocationEnvironment)
             {
-                if(eo.Details.ID == objectToAdd.ID)
+                if (eo.Details.ID == objectToAdd.ID)
                 {
                     eo.Quantity++;
                     return;

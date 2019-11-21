@@ -1,11 +1,4 @@
-﻿using Engine;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Engine
+﻿namespace Engine
 {
     /// <summary>
     /// Class representing medical items that can restore a player's HP.
