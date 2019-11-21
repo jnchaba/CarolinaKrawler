@@ -30,6 +30,11 @@ namespace Engine
         public int RewardExperiencePoints { get; set; }
 
         /// <summary>
+        /// Boolean value representing whether quest is completed.
+        /// </summary>
+        public bool Status { get; set; }
+
+        /// <summary>
         /// Amount of Gold the quest rewards.
         /// </summary>
         public int RewardGold { get; set; }
@@ -60,6 +65,7 @@ namespace Engine
             RewardExperiencePoints = rewardExperiencePoints;
             RewardGold = rewardGold;
             RewardItem = rewardItem;
+            Status = false;
             QuestCompleteItems = new List<QuestCompleteItem>();
         }
 
@@ -70,6 +76,11 @@ namespace Engine
         public void addCompleteItem(QuestCompleteItem questCompleteItem)
         {
             QuestCompleteItems.Add(questCompleteItem);
+        }
+
+        public void setComplete()
+        {
+            this.Status = true;
         }
 
 

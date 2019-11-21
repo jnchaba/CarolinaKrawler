@@ -170,7 +170,7 @@ namespace CarolinaKrawler
                         }
                     }
                     rtbMessages.Text += Environment.NewLine;
-                    _player.Quests.Add(new PlayerQuest(newLocation.QuestHere));
+                    _player.Quests.Add(newLocation.QuestHere);
                 }
 
             }
@@ -335,9 +335,12 @@ namespace CarolinaKrawler
 
             dgvQuests.Rows.Clear();
 
-            foreach (PlayerQuest playerQuest in _player.Quests)
+            foreach (Quest playerQuest in _player.Quests)
             {
-                dgvQuests.Rows.Add(new[] { playerQuest.Details.Name, playerQuest.IsCompleted.ToString() });
+                if (_player.HasAllQuestCompleteItems(playerQuest)){
+                    playerQuest.setComplete();
+                }
+                dgvQuests.Rows.Add(new[] { playerQuest.Name, playerQuest.Status.ToString() });
             }
         }
 

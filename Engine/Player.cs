@@ -36,7 +36,7 @@ namespace Engine
         /// List representing Player's Quest Log.
         /// Contains Quests.
         /// </summary>
-        public List<PlayerQuest> Quests { get; set; }
+        public List<Quest> Quests { get; set; }
 
         /// <summary>
         /// Player's current location.
@@ -55,9 +55,8 @@ namespace Engine
         {
             Gold = gold;
             ExperiencePoints = experiencePoints;
-
             Inventory = new List<InventoryItem>();
-            Quests = new List<PlayerQuest>();
+            Quests = new List<Quest>();
         }
 
         /// <summary>
@@ -90,9 +89,9 @@ namespace Engine
         /// <returns></returns>
         public bool AtQuestDestinationToCompleteQuest(Quest quest)
         {
-            foreach (PlayerQuest playerQuest in Quests)
+            foreach (Quest playerQuest in Quests)
             {
-                if (playerQuest.Details.ID == 1)
+                if (playerQuest.ID == 1)
                 {
                     if (CurrentLocation.ID == 2)
                     {
@@ -112,9 +111,9 @@ namespace Engine
         /// <returns></returns>
         public bool HasThisQuest(Quest quest)
         {
-            foreach (PlayerQuest playerQuest in Quests)
+            foreach (Quest playerQuest in Quests)
             {
-                if (playerQuest.Details.ID == quest.ID)
+                if (playerQuest.ID == quest.ID)
                 {
                     return true;
                 }
@@ -130,11 +129,11 @@ namespace Engine
         /// <returns></returns>
         public bool CompletedThisQuest(Quest quest)
         {
-            foreach (PlayerQuest playerQuest in Quests)
+            foreach (Quest playerQuest in Quests)
             {
-                if (playerQuest.Details.ID == quest.ID)
+                if (playerQuest.ID == quest.ID)
                 {
-                    return playerQuest.IsCompleted;
+                    
                 }
             }
 
@@ -210,14 +209,17 @@ namespace Engine
             Inventory.Add(new InventoryItem(itemToAdd, 1));
         }
 
+        /// <summary>
+        /// Marks the quest as complete in the player's journal.
+        /// </summary>
+        /// <param name="quest"></param>
         public void MarkQuestCompleted(Quest quest)
         {
-            foreach (PlayerQuest pq in Quests)
+            foreach (Quest pq in Quests)
             {
-                if (pq.Details.ID == quest.ID)
+                if (pq.ID == quest.ID)
                 {
-                    pq.IsCompleted = true;
-                    return;
+                    pq.setComplete();
                 }
             }
         }
