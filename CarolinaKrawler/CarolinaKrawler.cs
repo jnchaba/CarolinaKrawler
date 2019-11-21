@@ -14,6 +14,8 @@ namespace CarolinaKrawler
         private Player _player;
         private Enemy _currentEnemy;
         private Lootable _currentLootable;
+        private List<Item> _currentContents;
+        private bool _looted;
 
         public CarolinaKrawler()
         {
@@ -265,31 +267,37 @@ namespace CarolinaKrawler
             dgvInspect.Columns[0].Width = 172;
             dgvInspect.Rows.Clear();
 
-            // List for Contents
-            List<Item> contents = new List<Item>();
-            // Add items from current loot items contents to list
-            foreach (Item lootItem in _currentLootable.Contents)
-            {
-                if (RandomNumberGenerator.NumberBetween(1, 100) <= lootItem.DropPercentage)
+            if (_looted == false) {
+                // List for Contents
+                _currentContents = new List<Item>();
+                // Add items from current loot items contents to list
+                foreach (Item lootItem in _currentLootable.Contents)
                 {
-                    contents.Add(lootItem);
+                    if (RandomNumberGenerator.NumberBetween(1, 100) <= lootItem.DropPercentage)
+                    {
+                        _currentContents.Add(lootItem);
+                    }
+                }
+                foreach (Item objectContents in _currentContents)
+                {
+                    cboContents.Items.Add(objectContents);
                 }
             }
-            if (contents.Count == 0)
+            if (_currentContents.Count == 0)
             {
                 cboContents.Enabled = false;
                 btnLoot.Enabled = false;
             }
             else
             {
+
                 cboContents.Enabled = true;
                 btnLoot.Enabled = true;
                 cboContents.DisplayMember = "Name";
                 cboContents.ValueMember = "ID";
-                cboContents.DataSource = contents;
                 cboContents.BindingContext = this.BindingContext;
             }
-            foreach (Item objectContents in contents)
+            foreach (Item objectContents in _currentContents)
             {
                 rtbMessages.Text += "You see " + objectContents.Name + " in the " + _currentLootable.Name + Environment.NewLine;
                 dgvInspect.Rows.Add(new[] { objectContents.Name });
@@ -301,9 +309,18 @@ namespace CarolinaKrawler
 
         private void LootInspectedItem()
         {
-            Item inspected = (Item)cboContents.SelectedItem;
-            _player.AddItemToInventory(inspected);
-            int selectedIndex = cboContents.SelectedIndex;
+            Lootable selectedLootable = (Lootable) cboInspect.SelectedItem;
+            Item selectedItem = (Item)cboContents.SelectedItem;
+            _player.AddItemToInventory(selectedLootable.lootContent(selectedItem));
+            _currentContents.Remove(selectedItem);
+            _currentContents.TrimExcess();
+            rtbMessages.Text += "You move the " + selectedItem.Name + " from the " + selectedLootable.Name + " to your inventory." + Environment.NewLine;
+            if (_currentContents.Count == 0)
+            {
+                rtbMessages.Text += "The " + selectedLootable.Name + " is empty!" + Environment.NewLine;
+            }
+            cboContents.Items.Remove(selectedItem);
+            UpdateInspectListInUI();
             UpdateInventoryListInUI();
         }
 
@@ -515,6 +532,7 @@ namespace CarolinaKrawler
             {
                 UpdateInspectListInUI();
                 selectedLootable.IsLooted = true;
+                _looted = true;
             }
 
         }
