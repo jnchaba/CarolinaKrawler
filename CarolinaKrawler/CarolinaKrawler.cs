@@ -325,6 +325,9 @@ namespace CarolinaKrawler
             }
         }
 
+        /// <summary>
+        /// Updates the Quest Log to reflect current quests and their status.
+        /// </summary>
         private void UpdateQuestListInUI()
         {
             dgvQuests.RowHeadersVisible = false;

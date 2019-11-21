@@ -78,6 +78,9 @@ namespace Engine
             QuestCompleteItems.Add(questCompleteItem);
         }
 
+        /// <summary>
+        /// Set this quest as complete.
+        /// </summary>
         public void setComplete()
         {
             this.Status = true;
