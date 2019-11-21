@@ -545,6 +545,7 @@ namespace CarolinaKrawler
             {
                 UpdatePlayerStats();
                 UpdateInventoryListInUI();
+                UpdateMedListInUI();
             }
             if (_currentEnemy != null)
             {
