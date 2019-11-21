@@ -69,6 +69,17 @@ namespace Engine
         {
             Contents.Add(item);
         }
+
+        /// <summary>
+        /// Method to loot an item from the container.
+        /// </summary>
+        /// <param name="item"> Item to loot. </param>
+        /// <returns> The item you are looting. </returns>
+        public Item lootContent(Item item)
+        {
+            Contents.Remove(item);
+            return item;
+        }
     }
 
 }
