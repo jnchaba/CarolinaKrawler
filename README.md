@@ -1,12 +1,13 @@
 written by J. Chaba.
 
+<h1> This project is no longer being developed </h1>
+
 -- description
 
 *this is a basic text-based RPG game written in C#
 *this game is a in-progress learning project/exercise
 *this game began development by following the instructions at https://scottlilly.com/learn-c-by-building-a-simple-rpg-index/
-	*the code has been modified and the instructions served as a framework/reference to someone who had only been learning C# for a week
-		*the developer intends for this project to continue in to the future until further notice, and intends to use this project to incorporate new concepts while learning C#
+
 *this project began on 08/30/2018
 
 -- instructions
