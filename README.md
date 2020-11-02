@@ -1,6 +1,6 @@
 written by J. Chaba.
 
-<h1> This project is no longer being developed </h1>
+<h1> This project is no longer being developed, but may be revisited and ported to unity soon(TM)</h1>
 
 -- description
 
