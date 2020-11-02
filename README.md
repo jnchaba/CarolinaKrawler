@@ -1,6 +1,6 @@
 written by J. Chaba.
 
-<h1> This project is no longer being developed, but may be revisited and ported to unity soon(TM)</h1>
+<h1> This project is on pause, may be ported to unity in the near future </h1>
 
 <h3>description</h3>
 <ul>
@@ -25,7 +25,8 @@ written by J. Chaba.
 
 <li>the game allows a player to interact with his/her inventory by selecting a medical item from a drop down box and clicking the "use" button (if player has a medical item)</li>
 </ul>
-----------------current version 0.30-----------------------
+
+<h1>current version 0.30</h1>
 
 <h2>Initial Release 09/01/2018</h2>
 <ul>
