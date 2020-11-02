@@ -67,17 +67,18 @@ written by J. Chaba.
 </ul>
 <h3>version 0.20 released</h3>
 
-<h3>UI changes
+<h2>UI changes</h2>
 <li>resized compass</li>
 	<li>separated compass controls from inside/outside controls, grouped under "world navigation"</li>
 <li>resized inside/outside</li>
 	<li>separated from compass controls, grouped under "local navigation"</li>
 <li>resized weapon/medical item interface, fixed alignment</li>
 
-<h2>Changelog 11/18/209
+<h2>Changelog 11/18/2019</h2>
 <li>added containers and player interactions with containers</li>
 <li>version 0.30 released</li>
 <li>general code refactoring and de-spaghettification</li>
+</ul>
 
-Future update:
-* fix infinite looting bug
+<h3>Future update:</h3>
+<li>fix infinite looting bug</li>
