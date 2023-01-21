@@ -1,6 +1,6 @@
 written by J. Chaba.
 
-<h1> This project is indefinitely on pause as a relic of the first code I wrote. </h1>
+<h1> This project is indefinitely on pause as a relic of the first code I wrote, before any formal classes. </h1>
 
 <h3>description</h3>
 <ul>
